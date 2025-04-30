@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Przelicznik doboru rozpylaczy</title>
+    <link rel="stylesheet" href="output.css" />
+
+    <!-- fonty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="m-0 p-0 bg-top-agrar-green/10 flex justify-center font-body">
+    <div class="m-3 bg-white rounded-3xl container flex flex-col justify-start">
+      <div class="header m-3 flex justify-between">
+        <div class="text-2xl font-header font-bold flex justify-center items-center flex-1"><p>Przelicznik doboru rozpylaczy</p></div>
+        <div class="h-full flex items-center justify-center">
+          <button id="reset" class="w-24 h-12 flex items-center justify-center border-top-agrar-green border-2 rounded-3xl text-2xl text-top-agrar-green hover:bg-top-agrar-green/25">Resetuj</button>
+        </div>
+      </div>
+      <div class="mt-5 flex justify-around flex-wrap">
+        <div class="w-80 p-3 flex flex-col justify-start">
+          <div class="text-2xl mb-5 ml-1 font-bold">1. Sugerowanie rozmiaru kropli:</div>
+          
+          <div class="info mb-5">
+            <div class="text-2xl mb-1 ml-1">Rodzaj środka</div>
+            <select id="rodzaj-srodka" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
+              <option disabled selected hidden>wybierz rodzaj środka</option>
+              <option value="herbicydy">herbicydy</option>
+              <option value="fungicydy">fungicydy</option>
+              <option value="zoocydy">zoocydy</option>
+              <option value="nawozy">nawozy</option>
+            </select>
+          </div>
+      
+          <div class="info mb-5">
+            <div class="text-2xl mb-1 ml-1">Działanie środka</div>
+            <select id="dzialanie-srodka" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
+                        <option disabled selected hidden>wybierz rodzaj środka</option>
+            </select>
+          </div>
+        </div>
+      </div>
+        <!-- <div class=" w-80 p-3 flex flex-col justify-start">
+          <div class="mb-5 text-lg font-bold text-center">Obliczanie parametrów pracy</div>
+          <div class="">
+            <div class="input mb-5 flex">
+              <input type="text" class="w-24 h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25" id="" placeholder="podaj wartość x" />
+              <div class="ml-2 text-xl flex items-center">jednostka</div>
+            </div>
+            <div class="info mb-5">
+              <div class="text-2xl text-center">Tu wpisz tekst do wyświetlenia, np. wynik:</div>
+              <div class="text-3xl mt-4 text-top-agrar-green text-center">wynik j<sup>2</sup></div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
