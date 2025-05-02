@@ -21,18 +21,27 @@
         </div>
       </div>
       <div class="mt-5 flex justify-around flex-wrap">
-        <div class="w-80 p-3 flex flex-col justify-start">
+        <div class="w-80 p-3 flex flex-col justify-start" id="section0">
+          <div class="flex flex-col">
+            <div class="text-2xl mb-5 ml-1 font-bold">Od czego chcesz zacząć?</div>
+            <div class="flex justify-center">
+              <button type="button" id="mam-rozpylacz" class="w-full m-4 p-2 h-16 border-2 rounded-2xl font-bold border-black calculation-option">Mam już rozpylacz</button>
+              <button type="button" id="wybor-rozpylacz" class="w-full m-4 p-2 h-16 border-2 rounded-2xl font-bold border-black calculation-option">Wybór rozpylacza</button>
+            </div>
+          </div>
+        </div>
+        <div class="w-80 p-3 flex flex-col justify-start" id="section1">
           <div class="flex">
-            <div class="text-2xl mb-5 ml-1 font-bold">1. Sugerowanie rozmiaru kropli (opcionalnie):</div>
+            <div class="text-2xl mb-5 ml-1 font-bold">Sugerowanie rozmiaru kropli:</div>
             <div class="h-full flex items-center justify-center">
-              <!-- <button class="w-20 h-12 border-black border-2 rounded-3xl text-2xl hover:bg-top-agrar-green/25">Pomiń</button> -->
+              <!-- <button class="w-full px-4 h-12 border-black border-2 rounded-3xl text-2xl hover:bg-top-agrar-green/25">Pomiń</button> -->
             </div>
           </div>
 
           <div class="mb-5">
             <div class="text-2xl mb-2 ml-1">Rodzaj środka</div>
             <select id="rodzaj-srodka" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
-              <option disabled selected hidden>wybierz rodzaj środka</option>
+              <option disabled selected hidden value="1">wybierz rodzaj środka</option>
               <option value="herbicydy">herbicydy</option>
               <option value="fungicydy">fungicydy</option>
               <option value="zoocydy">zoocydy</option>
@@ -50,57 +59,40 @@
           <div class="mb-5">
             <div class="text-2xl mb-2 ml-1">Prędkość wiartu</div>
             <select id="predkosc-wiatru" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
-              <option disabled selected hidden>wybierz prędkość wiatru</option>
+              <option disabled selected hidden value="1">wybierz prędkość wiatru</option>
               <option value="do1.5">do 1.5 m/s</option>
               <option value="do2.5">1.5 - 2.5 m/s</option>
               <option value="do5">2.5 - 5 m/s</option>
               <option value="ponad5">ponad 5 m/s</option>
             </select>
           </div>
-        </div>
-        <div class="w-80 p-3 flex flex-col justify-start">
-          <div class="text-2xl mb-5 ml-1 font-bold">2. Wybór wielkości/koloru rozpylacza:</div>
-          <div class="grid grid-cols-3 gap-4 mb-5 mx-auto">
-            <button type="button" title="01" id="btn01" class="w-20 h-20 border-2 rounded-md border-black bg-yellow-500 font-bold">
-              01
-              <p class="text-xs" id="text01"></p>
-            </button>
-            <button type="button" title="015" id="btn015" class="w-20 h-20 border-2 rounded-md border-black bg-green-500 font-bold">
-              015
-              <p class="text-xs" id="text015"></p>
-            </button>
-            <button type="button" title="02" id="btn02" class="w-20 h-20 border-2 rounded-md border-black bg-yellow-300 font-bold">
-              02
-              <p class="text-xs" id="text02"></p>
-            </button>
-            <button type="button" title="025" id="btn025" class="w-20 h-20 border-2 rounded-md border-black bg-violet-500 font-bold">
-              025
-              <p class="text-xs" id="text025"></p>
-            </button>
-            <button type="button" title="03" id="btn03" class="w-20 h-20 border-2 rounded-md border-black bg-blue-400 font-bold">
-              03
-              <p class="text-xs" id="text03"></p>
-            </button>
-            <button type="button" title="04" id="btn04" class="w-20 h-20 border-2 rounded-md border-black bg-red-500 font-bold">
-              04
-              <p class="text-xs" id="text04"></p>
-            </button>
-            <button type="button" title="05" id="btn05" class="w-20 h-20 border-2 rounded-md border-black bg-yellow-800 font-bold">
-              05
-              <p class="text-xs" id="text05"></p>
-            </button>
-            <button type="button" title="06" id="btn06" class="w-20 h-20 border-2 rounded-md border-black bg-slate-300 font-bold">
-              06
-              <p class="text-xs" id="text06"></p>
-            </button>
-            <button type="button" title="08" id="btn08" class="w-20 h-20 border-2 rounded-md border-black bg-white font-bold">
-              08
-              <p class="text-xs" id="text08"></p>
-            </button>
+
+          <div class="mb-5 flex justify-between px-1 text-2xl">
+            <div class="pr-4">Sugerowana wielkość kropli:</div>
+            <div class="text-top-agrar-green flex h-full items-center" id="wielkosc-kropli">uzupełnij</div>
           </div>
         </div>
-        <div class="w-80 p-3 flex flex-col justify-start">
-          <div class="text-2xl mb-5 ml-1 font-bold">3. Obliczanie parametrów pracy:</div>
+
+        <div class="w-80 p-3 flex flex-col justify-start" id="section2">
+          <div class="text-2xl mb-5 ml-1 font-bold">Proponowane rozpylacze:</div>
+          <div class="flex w-full flex-col mb-5 gap-y-3 items-center" id="wielkosc-rozpylacza"></div>
+        </div>
+        <div class="w-80 p-3 flex flex-col justify-start" id="section3">
+          <div class="text-2xl mb-5 ml-1 font-bold">Wybierz posiadany rozpylacz:</div>
+          <div class="grid grid-cols-3 gap-4">
+            <button type="button" title="01" id="btn01" class="w-full px-4 h-20 border-2 rounded-md border-black bg-yellow-500 font-bold rozpylacze">01</button>
+            <button type="button" title="015" id="btn015" class="w-full px-4 h-20 border-2 rounded-md border-black bg-green-500 font-bold rozpylacze">015</button>
+            <button type="button" title="02" id="btn02" class="w-full px-4 h-20 border-2 rounded-md border-black bg-yellow-300 font-bold rozpylacze">02</button>
+            <button type="button" title="025" id="btn025" class="w-full px-4 h-20 border-2 rounded-md border-black bg-violet-500 font-bold rozpylacze">025</button>
+            <button type="button" title="03" id="btn03" class="w-full px-4 h-20 border-2 rounded-md border-black bg-blue-400 font-bold rozpylacze">03</button>
+            <button type="button" title="04" id="btn04" class="w-full px-4 h-20 border-2 rounded-md border-black bg-red-500 font-bold rozpylacze">04</button>
+            <button type="button" title="05" id="btn05" class="w-full px-4 h-20 border-2 rounded-md border-black bg-yellow-800 font-bold rozpylacze">05</button>
+            <button type="button" title="06" id="btn06" class="w-full px-4 h-20 border-2 rounded-md border-black bg-slate-300 font-bold rozpylacze">06</button>
+            <button type="button" title="08" id="btn08" class="w-full px-4 h-20 border-2 rounded-md border-black bg-white font-bold rozpylacze">08</button>
+          </div>
+        </div>
+        <div class="w-80 p-3 flex flex-col justify-start" id="section4">
+          <div class="text-2xl mb-5 ml-1 font-bold">Obliczanie parametrów pracy:</div>
           <div class="text-2xl mb-2 ml-1">Co chcesz obliczyć?</div>
           <div class="grid grid-cols-3 gap-4 mb-5 mx-auto font-bold">
             <button type="button" id="cisnienie" class="w-full p-2 h-16 border-2 rounded-md border-black calculation-option">ciśnienie</button>
@@ -110,32 +102,34 @@
 
           <div class="mb-5" id="cisnienie-input">
             <div class="text-2xl mb-2 ml-1">Cieśnienie [bar]</div>
-            <select class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
-              <option value="1">1 bar</option>
-              <option value="1.5">1.5 bar</option>
-              <option value="2">2 bar</option>
-              <option value="3.5">3.5 bar</option>
-              <option value="4">4 bar</option>
-              <option value="5">5 bar</option>
-              <option value="6">6 bar</option>
-              <option value="7">7 bar</option>
-              <option value="8">8 bar</option>
+              <select class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input" id="cisnienie-input-input">
+                  <option value="1">1 bar</option>
+                  <option value="1.5">1.5 bar</option>
+                  <option value="2">2 bar</option>
+                  <option value="2.5">2.5 bar</option>
+                  <option value="3">3 bar</option>
+                  <option value="4">4 bar</option>
+                  <option value="5">5 bar</option>
+                  <option value="6">6 bar</option>
+                  <option value="7">7 bar</option>
+                  <option value="8">8 bar</option>
+              </select>
             </select>
           </div>
 
           <div class="mb-5" id="predkosc-input">
             <div class="text-2xl mb-2 ml-1">Prędkość [km/godz.]</div>
-            <input placeholder="Podaj prędkość w km na godz." class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25" />
+            <input placeholder="Podaj prędkość w km na godz." class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25  calculation-input"id="predkosc-input-input" inputmode="numeric" pattern="[0-9]"/>
           </div>
 
           <div class="mb-5" id="dawka-cieczy-input">
             <div class="text-2xl mb-2 ml-1">Dawka cieczy [l/ha]</div>
-            <input placeholder="Podaj dawkę cieczy w l na ha" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25" />
+            <input placeholder="Podaj dawkę cieczy w l na ha" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input" id="dawka-cieczy-input-input" inputmode="numeric" pattern="[0-9]"/>
           </div>
 
           <div class="mb-5">
             <div class="text-2xl mb-2 ml-1">Rozstaw rozpylaczy [cm]</div>
-            <select id="rozstaw-rozpylaczy" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25">
+            <select id="rozstaw-rozpylaczy" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input">
               <option value="25">25</option>
               <option value="100/3">33.3</option>
               <option value="35">35</option>
@@ -144,9 +138,15 @@
               <option value="75">75</option>
             </select>
           </div>
+
+          <div class="mb-5 flex justify-between px-2 text-2xl" id="wyniki">
+            <div id="to-calculate"></div>
+            <div class="text-top-agrar-green" id="result">uzupełnij</div>
+          </div>
         </div>
       </div>
     </div>
   </body>
+
   <script src="script.js"></script>
 </html>
