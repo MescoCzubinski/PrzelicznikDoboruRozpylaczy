@@ -15,7 +15,7 @@
   <body class="m-0 p-0 bg-top-agrar-green/10 flex justify-center font-body">
     <div class="m-3 bg-white rounded-3xl container flex flex-col justify-start">
       <div class="header m-3 flex justify-between">
-        <div class="text-2xl font-header font-bold flex justify-center items-center flex-1"><p>Przelicznik doboru rozpylaczy</p></div>
+        <div class="text-2xl font-header font-bold flex justify-center items-center flex-1"><p>Dobierz rozpylacz, ustaw ciśnienie</p></div>
         <div class="h-full flex items-center justify-center">
           <button id="reset" class="w-24 h-12 border-top-agrar-green border-2 rounded-3xl text-2xl text-top-agrar-green hover:bg-top-agrar-green/25">Resetuj</button>
         </div>
@@ -76,6 +76,7 @@
         <div class="w-80 p-3 flex flex-col justify-start" id="section2">
           <div class="text-2xl mb-5 ml-1 font-bold">Proponowane rozpylacze:</div>
           <div class="flex w-full flex-col mb-5 gap-y-3 items-center" id="wielkosc-rozpylacza"></div>
+          <div class="text-xl mb-2 mx-1 text-bg-info">Wybierz rozpylacz i przejdź do obliczeń</div>
         </div>
         <div class="w-80 p-3 flex flex-col justify-start" id="section3">
           <div class="text-2xl mb-5 ml-1 font-bold">Wybierz posiadany rozpylacz:</div>
@@ -92,7 +93,10 @@
           </div>
         </div>
         <div class="w-80 p-3 flex flex-col justify-start" id="section4">
-          <div class="text-2xl mb-5 ml-1 font-bold">Obliczanie parametrów pracy:</div>
+          <div class="flex mx-1 mb-2 text-2xl justify-between">
+            <div class="">Wybrałeś rozpylacz:</div>
+            <div class="" id="rozmiar-rozpylacza"></div>
+          </div>
           <div class="text-2xl mb-2 ml-1">Co chcesz obliczyć?</div>
           <div class="grid grid-cols-3 gap-4 mb-5 mx-auto font-bold">
             <button type="button" id="cisnienie" class="w-full p-2 h-16 border-2 rounded-md border-black calculation-option">ciśnienie</button>
@@ -101,47 +105,59 @@
           </div>
 
           <div class="mb-5" id="cisnienie-input">
-            <div class="text-2xl mb-2 ml-1">Cieśnienie [bar]</div>
-              <select class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input" id="cisnienie-input-input">
-                  <option value="1">1 bar</option>
-                  <option value="1.5">1.5 bar</option>
-                  <option value="2">2 bar</option>
-                  <option value="2.5">2.5 bar</option>
-                  <option value="3">3 bar</option>
-                  <option value="4">4 bar</option>
-                  <option value="5">5 bar</option>
-                  <option value="6">6 bar</option>
-                  <option value="7">7 bar</option>
-                  <option value="8">8 bar</option>
+            <div class="text-2xl mb-2 ml-1">Cieśnienie</div>
+            <div class="flex gap-2">
+              <select class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input grow-1" id="cisnienie-input-input">
+                <option selected disabled hidden value="0">Wybierz wartość:</option>
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
               </select>
-            </select>
+              <div class="text-2xl mt-2">bar</div>
+            </div>
           </div>
 
           <div class="mb-5" id="predkosc-input">
-            <div class="text-2xl mb-2 ml-1">Prędkość [km/godz.]</div>
-            <input placeholder="Podaj prędkość w km na godz." class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25  calculation-input"id="predkosc-input-input" inputmode="numeric" pattern="[0-9]"/>
+            <div class="text-2xl mb-2 ml-1">Prędkość:</div>
+            <div class="flex gap-2">
+              <input placeholder="Podaj prędkość w km/godz." class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input grow-1" id="predkosc-input-input" inputmode="numeric" pattern="[0-9]" />
+              <div class="text-2xl mt-2">km/godz.</div>
+            </div>
           </div>
 
           <div class="mb-5" id="dawka-cieczy-input">
-            <div class="text-2xl mb-2 ml-1">Dawka cieczy [l/ha]</div>
-            <input placeholder="Podaj dawkę cieczy w l na ha" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input" id="dawka-cieczy-input-input" inputmode="numeric" pattern="[0-9]"/>
+            <div class="text-2xl mb-2 ml-1">Dawka cieczy:</div>
+            <div class="flex gap-2">
+              <input placeholder="Podaj dawkę cieczy w l/ha" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input grow-1" id="dawka-cieczy-input-input" inputmode="numeric" pattern="[0-9]" />
+              <div class="text-2xl mt-2">l/ha</div>
+            </div>
           </div>
 
           <div class="mb-5">
-            <div class="text-2xl mb-2 ml-1">Rozstaw rozpylaczy [cm]</div>
-            <select id="rozstaw-rozpylaczy" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input">
-              <option value="25">25</option>
-              <option value="100/3">33.3</option>
-              <option value="35">35</option>
-              <option value="45">45</option>
-              <option selected value="50">50</option>
-              <option value="75">75</option>
-            </select>
+            <div class="text-2xl mb-2 ml-1">Rozstaw rozpylaczy na belce:</div>
+            <div class="flex gap-2">
+              <select id="rozstaw-rozpylaczy" class="w-full h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25 calculation-input grow-1">
+                <option value="25">25</option>
+                <option value="100/3">33.3</option>
+                <option value="35">35</option>
+                <option value="45">45</option>
+                <option selected value="50">50</option>
+                <option value="75">75</option>
+              </select>
+              <div class="text-2xl mt-2">cm</div>
+            </div>
           </div>
 
           <div class="mb-5 flex justify-between px-2 text-2xl" id="wyniki">
             <div id="to-calculate"></div>
-            <div class="text-top-agrar-green" id="result">uzupełnij</div>
+            <div class="text-top-agrar-green h-full flex items-center" id="result">uzupełnij</div>
           </div>
         </div>
       </div>

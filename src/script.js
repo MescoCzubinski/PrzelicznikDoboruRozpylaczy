@@ -142,6 +142,7 @@ const wielkoscRozpylacza = {
   ],
 };
 const wielkoscRozpylaczaContainer = document.querySelector("#wielkosc-rozpylacza");
+const rozmiarRozpylaczaElement = document.querySelector("#rozmiar-rozpylacza");
 
 function sprayerSize(dropSize) {
   wielkoscRozpylaczaContainer.innerHTML = "";
@@ -205,6 +206,7 @@ function section3service() {
       sekcja4.classList.remove("hidden");
 
       wielkoscRozpylacza = this.id.replace("btn", "").replaceAll("a", "").replaceAll("b", "").replaceAll("c", "");
+      rozmiarRozpylaczaElement.textContent = wielkoscRozpylacza;
     });
   });
 
@@ -214,7 +216,9 @@ function section3service() {
     });
   });
 }
-
+const cisnienieBg = document.querySelector("#cisnienie");
+const predkoscBg = document.querySelector("#predkosc");
+const dawkaCieczyBg = document.querySelector("#dawka-cieczy");
 const cisnienieElement = document.querySelector("#cisnienie-input");
 const predkoscElement = document.querySelector("#predkosc-input");
 const dawkaCieczyElement = document.querySelector("#dawka-cieczy-input");
@@ -231,6 +235,7 @@ predkoscElement.classList.add("hidden");
 dawkaCieczyElement.classList.add("hidden");
 wynikiElement.classList.add("hidden");
 const pressureData = {
+  // 0: { "01": 0, "015": 0, "02": 0, "025": 0, "03": 0, "04": 0, "05": 0, "06": 0, "08": 0 },
   1: { "01": 0.23, "015": 0.34, "02": 0.46, "025": 0.57, "03": 0.68, "04": 0.91, "05": 1.14, "06": 1.37, "08": 1.82 },
   1.5: { "01": 0.28, "015": 0.42, "02": 0.57, "025": 0.7, "03": 0.85, "04": 1.13, "05": 1.41, "06": 1.7, "08": 2.26 },
   2: { "01": 0.33, "015": 0.49, "02": 0.65, "025": 0.81, "03": 0.98, "04": 1.31, "05": 1.63, "06": 1.96, "08": 2.61 },
@@ -251,23 +256,34 @@ function mainCalculation(wielkoscRozpylacza, coObliczasz) {
         predkoscElement.classList.remove("hidden");
         dawkaCieczyElement.classList.remove("hidden");
         cisnienieElement.classList.add("hidden");
-        coDoObliczenia.textContent = "Ciśnienie:";
+        cisnienieBg.style.backgroundColor = "#aaa";
+        predkoscBg.style.backgroundColor = "#fff";
+        dawkaCieczyBg.style.backgroundColor = "#fff";
+        coDoObliczenia.textContent = "Ciśnienie [bar] ok.:";
         break;
 
       case "predkosc":
         cisnienieElement.classList.remove("hidden");
         dawkaCieczyElement.classList.remove("hidden");
         predkoscElement.classList.add("hidden");
-        coDoObliczenia.textContent = "Prędkość:";
+        cisnienieBg.style.backgroundColor = "#fff";
+        predkoscBg.style.backgroundColor = "#aaa";
+        dawkaCieczyBg.style.backgroundColor = "#fff";
+        coDoObliczenia.textContent = "Prędkość [km/godz.] ok.:";
         break;
 
       case "dawka-cieczy":
         cisnienieElement.classList.remove("hidden");
         predkoscElement.classList.remove("hidden");
         dawkaCieczyElement.classList.add("hidden");
-        coDoObliczenia.textContent = "Dawka cieczy:";
+        cisnienieBg.style.backgroundColor = "#fff";
+        predkoscBg.style.backgroundColor = "#fff";
+        dawkaCieczyBg.style.backgroundColor = "#aaa";
+        coDoObliczenia.textContent = "Dawka cieczy [l/ha] ok.:";
         break;
     }
+    wynik.textContent = "uzupenij";
+
     document.querySelectorAll(".calculation-input").forEach((element) => {
       element.addEventListener("input", function () {
         let dawka;
@@ -330,4 +346,21 @@ document.querySelector("#reset").addEventListener("click", function () {
   wiatrSelect.value = 1;
   wiatrSelect.classList.remove("visited");
   sekcja4.classList.add("hidden");
+
+  cisnienieInputElement.value = "0";
+  predkoscInputElement.value = "";
+  dawkaCieczyInputElement.value = "";
+  rozstawInputElement.value = "50";
+  cisnienieBg.style.backgroundColor = "#fff";
+  predkoscBg.style.backgroundColor = "#fff";
+  dawkaCieczyBg.style.backgroundColor = "#fff";
+  cisnienieElement.classList.add("hidden");
+  predkoscElement.classList.add("hidden");
+  dawkaCieczyElement.classList.add("hidden");
+  cisnienieInputElement.classList.remove("visited");
+  predkoscInputElement.classList.remove("visited");
+  dawkaCieczyInputElement.classList.remove("visited");
+  rozstawInputElement.classList.remove("visited");
+  wynikiElement.classList.add("hidden");
+  wynik.textContent = "uzupenij";
 });
