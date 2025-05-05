@@ -189,14 +189,14 @@ function sprayerSize(dropSize) {
 }
 function section2service() {
   sprayerSize(dropSize());
-  section3service();
+  section3service(false);
 }
 dzialanieSelect.addEventListener("change", section2service);
 wiatrSelect.addEventListener("change", section2service);
 
-section3service();
+section3service(true);
 
-function section3service() {
+function section3service(mamRozpylacz) {
   let wielkoscRozpylacza;
   document.querySelectorAll(".rozpylacze").forEach((element) => {
     element.addEventListener("click", function () {
@@ -208,6 +208,54 @@ function section3service() {
       wielkoscRozpylacza = this.id.replace("btn", "").replaceAll("a", "").replaceAll("b", "").replaceAll("c", "");
       rozmiarRozpylaczaElement.textContent = wielkoscRozpylacza;
     });
+  });
+
+  document.querySelector("#cofnij").addEventListener("click", function () {
+    if (mamRozpylacz) {
+      sekcja1.classList.add("hidden");
+      sekcja2.classList.add("hidden");
+      sekcja3.classList.remove("hidden");
+      sekcja4.classList.add("hidden");
+
+      cisnienieInputElement.value = "0";
+      predkoscInputElement.value = "";
+      dawkaCieczyInputElement.value = "";
+      rozstawInputElement.value = "50";
+      cisnienieBg.style.backgroundColor = "#fff";
+      predkoscBg.style.backgroundColor = "#fff";
+      dawkaCieczyBg.style.backgroundColor = "#fff";
+      cisnienieElement.classList.add("hidden");
+      predkoscElement.classList.add("hidden");
+      dawkaCieczyElement.classList.add("hidden");
+      cisnienieInputElement.classList.remove("visited");
+      predkoscInputElement.classList.remove("visited");
+      dawkaCieczyInputElement.classList.remove("visited");
+      rozstawInputElement.classList.remove("visited");
+      wynikiElement.classList.add("hidden");
+      wynik.textContent = "uzupenij";
+    } else {
+      sekcja1.classList.remove("hidden");
+      sekcja2.classList.remove("hidden");
+      sekcja3.classList.add("hidden");
+      sekcja4.classList.add("hidden");
+
+      cisnienieInputElement.value = "0";
+      predkoscInputElement.value = "";
+      dawkaCieczyInputElement.value = "";
+      rozstawInputElement.value = "50";
+      cisnienieBg.style.backgroundColor = "#fff";
+      predkoscBg.style.backgroundColor = "#fff";
+      dawkaCieczyBg.style.backgroundColor = "#fff";
+      cisnienieElement.classList.add("hidden");
+      predkoscElement.classList.add("hidden");
+      dawkaCieczyElement.classList.add("hidden");
+      cisnienieInputElement.classList.remove("visited");
+      predkoscInputElement.classList.remove("visited");
+      dawkaCieczyInputElement.classList.remove("visited");
+      rozstawInputElement.classList.remove("visited");
+      wynikiElement.classList.add("hidden");
+      wynik.textContent = "uzupenij";
+    }
   });
 
   document.querySelectorAll(".calculation-option").forEach((element) => {

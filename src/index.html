@@ -25,8 +25,8 @@
           <div class="flex flex-col">
             <div class="text-2xl mb-5 ml-1 font-bold">Od czego chcesz zacząć?</div>
             <div class="flex justify-center">
-              <button type="button" id="mam-rozpylacz" class="w-full m-4 p-2 h-16 border-2 rounded-2xl font-bold border-black calculation-option">Mam już rozpylacz</button>
-              <button type="button" id="wybor-rozpylacz" class="w-full m-4 p-2 h-16 border-2 rounded-2xl font-bold border-black calculation-option">Wybór rozpylacza</button>
+              <button type="button" id="wybor-rozpylacz" class="w-full m-2 p-2 h-fit border-2 rounded-2xl font-bold border-black calculation-option">Wybór rozpylacza do warunków zabiegu</button>
+              <button type="button" id="mam-rozpylacz" class="w-full m-2 p-2 h-fit border-2 rounded-2xl font-bold border-black calculation-option">Mam już rozpylacz i chcę dobrać parametry</button>
             </div>
           </div>
         </div>
@@ -93,9 +93,12 @@
           </div>
         </div>
         <div class="w-80 p-3 flex flex-col justify-start" id="section4">
-          <div class="flex mx-1 mb-2 text-2xl justify-between">
-            <div class="">Wybrałeś rozpylacz:</div>
-            <div class="" id="rozmiar-rozpylacza"></div>
+          <div class="flex mx-1 mb-2 text-lg justify-between border-b-2 pb-3 border-bg-info">
+            <div class="h-full flex items-center font-bold">Wybrany rozpylacz:</div>
+            <div class="h-full flex items-center mr-10 text-4xl" id="rozmiar-rozpylacza"></div>
+            <div class="h-full flex items-center">
+              <button class="w-fit p-2 h-fit border-2 text-sm font-bold rounded-xl border-black hover:bg-top-agrar-green/20" id="cofnij">cofnij wybór</button>
+            </div>
           </div>
           <div class="text-2xl mb-2 ml-1">Co chcesz obliczyć?</div>
           <div class="grid grid-cols-3 gap-4 mb-5 mx-auto font-bold">
